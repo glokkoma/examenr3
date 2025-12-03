@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+
+    <div class="detail-container">
+        <h1 class="detail-name"><%= pokemon.nombre %></h1>
+        
+        <div class="detail-meta">
+            <p><%= pokemon.numero %></p>
+            <p><%= pokemon.tipo.join(', ') %></p>
+        </div>
+
+        <img src="<%= pokemon.imagen %>" alt="<%= pokemon.nombre %>" class="detail-img">
+
+        <div class="detail-description">
+            <%- pokemon.descripcion %>
+        </div>
+
+        <a href="/" class="back-link">Volver a la PokéDex</a>
+    </div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéDex</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>PokéDex</h1>
+            <p>Enciclopedia Pokémon Completa</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/">Todos</a></li>
+            <% if (typeof allTypes !== 'undefined') { %>
+                <% allTypes.forEach(type => { %>
+                    <li><a href="/tipo/<%= type %>"><%= type %></a></li>
+                <% }) %>
+            <% } %>
+        </ul>
+    </nav>
+
+    <main>

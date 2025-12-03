@@ -1,41 +1,48 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const app = express();
+const dataService = require('./data/dataService');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+app.use((req, res, next) => {
+    const typesSet = dataService.findAllPokemonTypes();
+    res.locals.allTypes = Array.from(typesSet); 
+    next();
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+app.get('/', (req, res) => {
+    const pokemons = dataService.findAllPokemons();
+    res.render('index', { 
+        pokemons: pokemons,
+        title: 'Pokémon Registrados' 
+    });
 });
 
-module.exports = app;
+app.get('/tipo/:type', (req, res) => {
+    const type = req.params.type;
+    const pokemons = dataService.findAllPokemonsByType(type);
+    res.render('index', { 
+        pokemons: pokemons,
+        title: `Tipo: ${type}`
+    });
+});
+
+app.get('/pokemon/:id', (req, res) => {
+    const id = req.params.id;
+    const pokemon = dataService.findPokemonById(id);
+    
+    if (pokemon) {
+        res.render('pokemon', { pokemon: pokemon });
+    } else {
+        res.status(404).send('Pokémon no encontrado');
+    }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor Pokedex corriendo en http://localhost:${PORT}`);
+});

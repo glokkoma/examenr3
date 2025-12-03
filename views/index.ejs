@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('partials/header') %>
+
+    <h2 class="page-title"><%= title %></h2>
+
+    <div class="pokemon-grid">
+        <% pokemons.forEach(poke => { %>
+            <a href="/pokemon/<%= poke.id %>" class="card">
+                <img src="<%= poke.imagen %>" alt="<%= poke.nombre %>" class="card-img">
+                <div class="card-info">
+                    <span class="card-number"><%= poke.numero %></span>
+                    <h3 class="card-name"><%= poke.nombre %></h3>
+                </div>
+            </a>
+        <% }) %>
+    </div>
+
+<%- include('partials/footer') %>
