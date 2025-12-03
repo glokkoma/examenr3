@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: sans-serif;
     background-color: #f5f5f5; 
     color: #333;
     display: flex;
@@ -14,8 +14,7 @@ body {
 }
 
 header {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-                url('../img/header-bg.jpg'); 
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.pexels.com/photos/7708409/pexels-photo-7708409.jpeg'); 
     background-size: cover;
     background-position: center;
     color: white;
@@ -73,7 +72,7 @@ main {
     padding: 40px 20px;
 }
 
-.page-title {
+.titulo {
     text-align: center;
     margin-bottom: 40px;
     color: #444;
@@ -81,7 +80,7 @@ main {
     font-weight: bold;
 }
 
-.pokemon-grid {
+.pokeGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 30px;
@@ -108,20 +107,20 @@ main {
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
-.card-img {
+.cardImg {
     width: 150px;
     height: 150px;
     object-fit: contain;
     margin-bottom: 15px;
 }
 
-.card-info {
+.cardInfo {
     width: 100%;
     text-align: left;
     padding-left: 10px;
 }
 
-.card-number {
+.cardNumber {
     color: #999;
     font-size: 0.8rem;
     font-weight: bold;
@@ -129,32 +128,32 @@ main {
     margin-bottom: 5px;
 }
 
-.card-name {
+.cardName {
     font-size: 1.1rem;
     font-weight: bold;
     color: #333;
 }
 
-.detail-container {
+.container {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
     background-color: transparent; 
 }
 
-.detail-name {
+.pokeNom {
     font-size: 2rem;
     color: #222;
     margin-bottom: 10px;
 }
 
-.detail-meta {
+.pokeInfo {
     color: #555;
     margin-bottom: 30px;
     font-size: 1rem;
 }
 
-.detail-img {
+.pokeImg {
     width: 300px;
     height: 300px;
     object-fit: contain;
@@ -164,7 +163,7 @@ main {
     margin-right: auto;
 }
 
-.detail-description {
+.pokeDesc {
     text-align: left;
     line-height: 1.6;
     color: #444;
@@ -172,11 +171,11 @@ main {
     margin-bottom: 40px;
 }
 
-.detail-description p {
+.pokeDesc p {
     margin-bottom: 15px;
 }
 
-.back-link {
+.atras {
     display: inline-block;
     color: #4356b7;
     text-decoration: underline;

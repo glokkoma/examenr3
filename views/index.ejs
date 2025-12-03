@@ -1,14 +1,14 @@
 <%- include('partials/header') %>
 
-    <h2 class="page-title"><%= title %></h2>
+    <h2 class="titulo"><%= title %></h2>
 
-    <div class="pokemon-grid">
+    <div class="pokeGrid">
         <% pokemons.forEach(poke => { %>
             <a href="/pokemon/<%= poke.id %>" class="card">
-                <img src="<%= poke.imagen %>" alt="<%= poke.nombre %>" class="card-img">
-                <div class="card-info">
-                    <span class="card-number"><%= poke.numero %></span>
-                    <h3 class="card-name"><%= poke.nombre %></h3>
+                <img src="<%= poke.imagen %>" alt="<%= poke.nombre %>" class="cardImg">
+                <div class="cardInfo">
+                    <span class="cardNumber"><%= poke.numero %></span>
+                    <h3 class="cardName"><%= poke.nombre %></h3>
                 </div>
             </a>
         <% }) %>
